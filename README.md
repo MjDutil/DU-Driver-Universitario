@@ -24,24 +24,24 @@ Oi! Eu sou a Maju e o **DU** é um app que eu desenvolvi para um projeto de disc
 
 A ideia veio de uma coisa que todo universitário conhece: chegar na faculdade é caro, demorado e, muitas vezes, inseguro. Enquanto isso, tem muita gente indo para o mesmo campus, no mesmo horário, com lugar sobrando no carro. O DU conecta essas pessoas: quem dirige oferece a carona, quem precisa encontra alguém **da própria instituição** para dividir o caminho e o custo.
 
-Esta versão é o **frontend completo** do app, com todas as telas e fluxos funcionando sobre dados simulados. O backend ainda não existe; deixei a especificação dele pronta em [BACKEND.md](BACKEND.md).
+Esta versão é o **frontend completo** do app, com todas as telas e fluxos funcionando sobre dados simulados.
 
 ## ✨ Funcionalidades
 
-- 🎟️ **Cadastro em 7 etapas**: começa por um código de convite e segue com nome, apelido, contato, tratamento, data de nascimento e senha
-- 🙋‍♀️ **Perfil**: cidade, instituição e interesses (música, tecnologia…) para quebrar o gelo na viagem
-- 🔎 **Buscar carona**: lista de motoristas com avaliação, trajeto e preço
-- 🚗 **Oferecer carona em 6 etapas**: CNH, dados e cor do carro, rota, datas, vagas e valor
-- 📍 **Acompanhar a corrida**: tela de rastreamento com mapa animado
-- ⭐ **Avaliação**: ao chegar, a passageira ou o passageiro avalia a pessoa que dirigiu
-- 💬 **Chat** entre passageiros e motorista
-- 🕓 **Histórico** de caronas, como passageira(o) ou como motorista
+- **Cadastro em 7 etapas**: começa por um código de convite e segue com nome, apelido, contato, tratamento, data de nascimento e senha
+- **Perfil**: cidade, instituição e interesses (música, tecnologia…) para quebrar o gelo na viagem
+- **Buscar carona**: lista de motoristas com avaliação, trajeto e preço
+- **Oferecer carona em 6 etapas**: CNH, dados e cor do carro, rota, datas, vagas e valor
+- **Acompanhar a corrida**: tela de rastreamento com mapa animado
+- **Avaliação**: ao chegar, a passageira ou o passageiro avalia a pessoa que dirigiu
+- **Chat** entre passageiros e motorista
+- **Histórico** de caronas, como passageira(o) ou como motorista
 
-### 💗 Pensado para a segurança das mulheres
+### Pensado para a segurança das mulheres
 
 Usuárias que escolhem o tratamento **"Sra"** podem filtrar para ver **apenas motoristas mulheres**. Quando uma motorista publica uma oferta, a carona é sugerida de preferência para passageiras. Para mim essa foi uma das partes mais importantes do projeto.
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 | Tecnologia | Para que usei |
 |---|---|
@@ -51,7 +51,7 @@ Usuárias que escolhem o tratamento **"Sra"** podem filtrar para ver **apenas mo
 | **Zustand** | Estado global e rascunhos dos formulários de várias etapas |
 | **Plus Jakarta Sans** + **DM Sans** | Tipografia (títulos e texto) |
 
-## 🚀 Como rodar
+## Como rodar
 
 **Pré-requisitos:** Node.js 18+ e npm. Para testar no celular, instale o app [Expo Go](https://expo.dev/go).
 
@@ -70,11 +70,11 @@ npm run ios      # simulador iOS (precisa do Xcode)
 npm run android  # emulador Android (precisa do Android Studio)
 ```
 
-> 📌 O arquivo `.npmrc` (`legacy-peer-deps=true`) é necessário para resolver conflitos de dependências do React 19. Não apague!
+> O arquivo `.npmrc` (`legacy-peer-deps=true`) é necessário para resolver conflitos de dependências do React 19. Não apague!
 
-> 👀 O app abre com uma usuária já logada. Para ver o fluxo de cadastro desde o início, mude `isAuthenticated` para `false` em `src/store/useAppStore.ts`.
+> O app abre com uma usuária já logada. Para ver o fluxo de cadastro desde o início, mude `isAuthenticated` para `false` em `src/store/useAppStore.ts`.
 
-## 🗂️ Estrutura
+## Estrutura
 
 ```
 app/                 # telas (Expo Router)
@@ -91,7 +91,7 @@ src/
 └── theme/tokens.ts  # cores, tipografia e espaçamentos
 ```
 
-## 📚 Decisões e aprendizados
+## Decisões e aprendizados
 
 - **Rotas como arquivos.** Com o Expo Router, a estrutura de pastas *é* a navegação, e os grupos `(auth)`, `(tabs)` e `(profile)` separam bem cada fluxo.
 - **Formulários longos sem dor de cabeça.** Cadastro e oferta de carona têm várias etapas. Guardar o rascunho em stores do Zustand (`useAuthStore`, `useOfferStore`) deixou cada tela simples e independente.
@@ -99,7 +99,7 @@ src/
 - **Adaptar quando a biblioteca não coopera.** O `react-native-maps` não funciona no Expo Go, então fiz a tela de rastreamento com um mapa simulado usando a API `Animated`.
 - **Detalhes contam.** A tela de abertura animada foi feita só com `Animated`, sem nenhuma biblioteca extra.
 
-## 🔭 Próximos passos
+## Próximos passos
 
 - [ ] Backend em Python seguindo a especificação em [BACKEND.md](BACKEND.md)
 - [ ] Geolocalização real com `expo-location`
