@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { View } from 'react-native';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import {
@@ -14,6 +15,7 @@ import {
   DMSans_500Medium,
   DMSans_700Bold,
 } from '@expo-google-fonts/dm-sans';
+import { AnimatedSplash } from '../src/components/AnimatedSplash';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,6 +30,7 @@ export default function RootLayout() {
     DMSans_Medium: DMSans_500Medium,
     DMSans_Bold: DMSans_700Bold,
   });
+  const [splashDone, setSplashDone] = useState(false);
 
   useEffect(() => {
     if (fontsLoaded || fontError) {
@@ -38,15 +41,18 @@ export default function RootLayout() {
   if (!fontsLoaded && !fontError) return null;
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="(auth)" />
-      <Stack.Screen name="(profile)" />
-      <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="chat/[id]" />
-      <Stack.Screen name="ride/finish" />
-      <Stack.Screen name="ride/tracking" />
-      <Stack.Screen name="offer" />
-    </Stack>
+    <View style={{ flex: 1 }}>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(profile)" />
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="chat/[id]" />
+        <Stack.Screen name="ride/finish" />
+        <Stack.Screen name="ride/tracking" />
+        <Stack.Screen name="offer" />
+      </Stack>
+      {!splashDone && <AnimatedSplash onFinish={() => setSplashDone(true)} />}
+    </View>
   );
 }
